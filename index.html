@@ -454,6 +454,38 @@
       .about-grid { grid-template-columns: 1fr; }
       .professor-card { flex-direction: column; align-items: center; text-align: center; }
     }
+    /* 연구성과 */
+    #achievements { background: white; }
+    .achieve-tabs { display: flex; gap: 0.5rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .achieve-tab { padding: 8px 20px; border-radius: 20px; border: 1px solid #cbd5e1; background: transparent; color: var(--gray); font-size: 0.9rem; cursor: pointer; transition: all 0.2s; font-family: 'Noto Sans KR', sans-serif; }
+    .achieve-tab.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .achieve-panel { display: none; }
+    .achieve-panel.active { display: block; }
+    .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .project-card { background: var(--lightgray); border-radius: 16px; padding: 1.8rem; border-top: 4px solid var(--blue); transition: transform 0.2s, box-shadow 0.2s; }
+    .project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(37,99,235,0.1); }
+    .project-badge { display: inline-block; background: rgba(37,99,235,0.1); color: var(--blue); font-size: 0.75rem; font-weight: 600; padding: 3px 10px; border-radius: 12px; margin-bottom: 0.75rem; }
+    .project-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; line-height: 1.5; }
+    .project-card p { font-size: 0.85rem; color: var(--gray); line-height: 1.6; margin-bottom: 0.75rem; }
+    .project-meta { font-size: 0.8rem; color: var(--gray); display: flex; gap: 1rem; flex-wrap: wrap; }
+    .patent-list { display: flex; flex-direction: column; gap: 1rem; }
+    .patent-item { background: var(--lightgray); border-radius: 12px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; }
+    .patent-icon { font-size: 2rem; flex-shrink: 0; }
+    .patent-title { font-weight: 600; color: var(--navy); font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .patent-meta { font-size: 0.82rem; color: var(--gray); }
+
+    /* 졸업생 */
+    #alumni { background: var(--light); }
+    .alumni-year-group { margin-bottom: 3rem; }
+    .alumni-year-label { font-size: 1rem; font-weight: 700; color: var(--navy); padding-bottom: 0.75rem; border-bottom: 2px solid var(--blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .alumni-year-label::after { content: ''; flex: 1; height: 2px; background: var(--lightgray); }
+    .alumni-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+    .alumni-card { background: white; border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.2s; }
+    .alumni-card:hover { transform: translateY(-3px); }
+    .alumni-avatar { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--navy), var(--blue)); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: 600; }
+    .alumni-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); margin-bottom: 0.2rem; }
+    .alumni-degree { font-size: 0.78rem; color: var(--blue); margin-bottom: 0.15rem; }
+    .alumni-current { font-size: 0.78rem; color: var(--gray); }
   </style>
 </head>
 <body>
@@ -634,6 +666,56 @@
     </div>
   </section>
 
+  <!-- 연구성과 -->
+  <section id="achievements">
+    <div class="section-label">Research Achievements</div>
+    <h2 class="section-title">연구성과</h2>
+    <p class="section-desc">연구실의 주요 프로젝트 및 특허 성과입니다.</p>
+    <div class="achieve-tabs">
+      <button class="achieve-tab active" onclick="switchTab(event, 'tab-projects')">연구 프로젝트</button>
+      <button class="achieve-tab" onclick="switchTab(event, 'tab-patents')">특허</button>
+    </div>
+    <div id="tab-projects" class="achieve-panel active">
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-badge">국가연구개발</div>
+          <h3>프로젝트 제목을 여기에 입력하세요</h3>
+          <p>연구 내용을 간략히 설명하는 문장을 여기에 입력하세요.</p>
+          <div class="project-meta"><span>📅 2023 – 2026</span><span>🏛 주관기관명</span></div>
+        </div>
+        <div class="project-card">
+          <div class="project-badge">산학협력</div>
+          <h3>프로젝트 제목을 여기에 입력하세요</h3>
+          <p>연구 내용을 간략히 설명하는 문장을 여기에 입력하세요.</p>
+          <div class="project-meta"><span>📅 2022 – 2024</span><span>🏛 주관기관명</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="tab-patents" class="achieve-panel">
+      <div class="patent-list">
+        <div class="patent-item">
+          <div class="patent-icon">📜</div>
+          <div><div class="patent-title">특허 명칭을 여기에 입력하세요</div><div class="patent-meta">등록번호: 10-XXXXXXX · 등록일: 2024.00.00 · 발명자: 권지향 외</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 졸업생 -->
+  <section id="alumni">
+    <div class="section-label">Alumni</div>
+    <h2 class="section-title">졸업생</h2>
+    <p class="section-desc">Water Lab을 거쳐 간 졸업생들입니다.</p>
+    <div class="alumni-year-group">
+      <div class="alumni-year-label">2024</div>
+      <div class="alumni-grid">
+        <div class="alumni-card">
+          <div class="alumni-avatar">졸업생</div>
+          <div><div class="alumni-name">이름</div><div class="alumni-degree">석사 졸업</div><div class="alumni-current">현 소속을 입력하세요</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- CONTACT -->
   <section id="contact">
     <div class="section-label">Contact Us</div>
@@ -668,5 +750,13 @@
     <p>© 2026 Water treatment&membrane Lab. All rights reserved.</p>
   </footer>
 
+  <script>
+    function switchTab(e, panelId) {
+      document.querySelectorAll('.achieve-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.achieve-panel').forEach(p => p.classList.remove('active'));
+      e.target.classList.add('active');
+      document.getElementById(panelId).classList.add('active');
+    }
+  </script>
 </body>
 </html>
